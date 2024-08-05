@@ -107,20 +107,19 @@ export default function IndexPage() {
                               {new Date(event.eventStartDate).toDateString()}
                             </p>
                           </div>
-                          <p
-                            className="paraidnfons"
-                            style={{ cursor: "pointer" }}
-                            dangerouslySetInnerHTML={{
-                              __html: event.eventContent
-                                .replace(/<img[^>]*>/g, "")
-                                .replace(/<p[^>]*>/g, "")
-                                .slice(0, 150),
-                            }}
-                          />
-                          <Link to={`/EventDetail/${event._id}`}>
-                            Read more
-                          </Link>
-
+                          <p className="paraidnfons">
+                            <div
+                              dangerouslySetInnerHTML={{
+                                __html: event.eventContent
+                                  .replace(/<img[^>]*>/g, "")
+                                  .replace(/<p[^>]*>/g, "")
+                                  .slice(0, 390),
+                              }}
+                            />
+                            <Link to={`/EventDetail/${event._id}`}>
+                              Read More
+                            </Link>
+                          </p>
                           <div className="icon-formeo">
                             <div className="iconpari">
                               <img
@@ -195,14 +194,14 @@ export default function IndexPage() {
                           <p className="paraidnfons">
                             <div
                               dangerouslySetInnerHTML={{
-                                __html: event.eventContent,
+                                __html: event.eventContent
+                                  .replace(/<img[^>]*>/g, "")
+                                  .replace(/<p[^>]*>/g, "")
+                                  .slice(0, 300),
                               }}
                             />
-                            <Link
-                              style={{ cursor: "pointer" }}
-                              to={`/EventDetail/${event._id}`}
-                            >
-                              Read more
+                            <Link to={`/EventDetail/${event._id}`}>
+                              Read More
                             </Link>
                           </p>
                           <div className="icon-formeo">
