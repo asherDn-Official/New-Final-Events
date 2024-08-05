@@ -5,17 +5,16 @@ exports.createEvent = async (req, res) => {
   try {
     // const eventData = {
     //   ...req.body,
-    //   eventStartDate: new Date(req.body.eventStartDate) || "",
-    //   eventEndDate: new Date(req.body.eventEndDate) || "",
-    //   bookingStartDate: new Date(req.body.bookingStartDate) || "",
-    //   bookingEndDate: new Date(req.body.bookingEndDate) || "",
+    //   eventStartDate: new Date(req.body.eventStartDate),
+    //   eventEndDate: new Date(req.body.eventEndDate),
+    //   bookingStartDate: new Date(req.body.bookingStartDate),
+    //   bookingEndDate: new Date(req.body.bookingEndDate),
     // };
     const eventData = req.body;
     const newEvent = new Event(eventData);
     const savedEvent = await newEvent.save();
     res.status(201).json(savedEvent);
   } catch (err) {
-    console.log(err);
     res.status(400).json({ message: err.message });
   }
 };
@@ -35,8 +34,7 @@ exports.createEntry = async (req, res) => {
   } = req.body;
 
   try {
-    const event = await Event.findOne({ _id: id });
-    console.log(event);
+    const event = await Event.findById(id);
     if (!event) {
       return res.status(404).send({ message: "Event not found" });
     }
